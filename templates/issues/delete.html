@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Delete Task{% endblock title %}
+
+{% block content %}
+<h1>Post Deleted</h1>
+<p>Are you sure you want to delete ""{{ issue.summary }}" ?</p>
+<form method="POST">
+    {% csrf_token %}
+    <a href="{% url 'board' %}"><input type="submit" value="Confirm" class="btn btn-danger"></a>
+</form>
+{% endblock content %}

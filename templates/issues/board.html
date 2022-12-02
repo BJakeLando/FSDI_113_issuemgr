@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Task List{% endblock title %}
+
+{% block content %}
+<h1>My Board</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <hr>
+            <div class ="card card-body">
+                <h1>To Do</h1>
+                <a class="btn btn-primary" href="{% url 'new_issue' %}">Create Task</a>
+                <table class ="table table-sm">
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+
+                    {% for issue in to_do_list %}
+                        <tr>
+                            <td><a href="{% url 'issue_detail' issue.id %}">{{ issue.summary | truncatechars:150 }}</a></td>
+                            <td>{{ issue.description | truncatechars:250 }}</td>
+                            <td>{{ issue.status }}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'edit_issue' issue.id %}">Update</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_issue' issue.id %}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <hr>
+            <div class ="card card-body">
+                <h1>In Progress</h1>
+                <a class="btn btn-primary" href="{% url 'new_issue' %}">Create Task</a>
+                <table class ="table table-sm">
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+
+                    {% for issue in in_p_list %}
+                        <tr>
+                            <td><a href="{% url 'issue_detail' issue.id %}">{{ issue.summary | truncatechars:150 }}</a></td>
+                            <td>{{ issue.description | truncatechars:250 }}</td>
+                            <td>{{ issue.status }}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'edit_issue' issue.id %}">Update</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_issue' issue.id %}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <hr>
+            <div class ="card card-body">
+                <h1>Done</h1>
+                <table class ="table table-sm">
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+
+                    {% for issue in done_list %}
+                        <tr>
+                            <td><a href="{% url 'issue_detail' issue.id %}">{{ issue.summary | truncatechars:150 }}</a></td>
+                            <td>{{ issue.description | truncatechars:250 }}</td>
+                            <td class =" btn-success ">{{ issue.status }}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'edit_issue' issue.id %}">Update</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_issue' issue.id %}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+      

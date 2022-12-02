@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ issue.summary }}{% endblock title %}
+
+
+{% block content %}
+<h1>Issue # {{issue.id }} </h1>
+<p><b>Summary:</b>{{ issue.summary }}</p>
+<p><b>Reported by:</b> {{ issue.reporter }} </p>
+<p><b>Reported on:</b> {{ issue.created_on }}</p>
+<p><b>Assignee:</b> {{ issue.assignee }}</p>
+<p><b>Status:</b> {{ issue.status }}</p>
+<p><b>Priority:</b> {{ issue.priority }}</p>
+<p><b>Description:</b></p>
+<p>{{ issue.description }}</p>
+<p><a href="(% url 'edit_issue' issue.id %}" class="btn btn-primary">Update</a></p>
+
+
+{% endblock content %}

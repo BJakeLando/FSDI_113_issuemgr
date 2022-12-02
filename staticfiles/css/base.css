@@ -1,0 +1,12 @@
+.card-header {
+    background-color: green;
+    padding: 5px;
+    margin: 5px;
+}
+
+.board-row {
+    margin-top: 20px;
+}
+.board-col-row {
+    padding: 20px;
+}
