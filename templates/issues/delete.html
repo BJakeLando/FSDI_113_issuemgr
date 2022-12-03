@@ -6,6 +6,6 @@
 <p>Are you sure you want to delete ""{{ issue.summary }}" ?</p>
 <form method="POST">
     {% csrf_token %}
-    <a href="{% url 'board' %}"><input type="submit" value="Confirm" class="btn btn-danger"></a>
+    <input type="submit" value="Confirm" class="btn btn-danger">
 </form>
 {% endblock content %}

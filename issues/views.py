@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView,TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from django.urls import reverse_lazy
@@ -51,10 +51,14 @@ class IssueUpdateView(UpdateView):
 class IssueDeleteView(DeleteView):
     template_name = "issues/delete.html"
     model = Issue
-    succes_url = reverse_lazy('board')
+    success_url = reverse_lazy('board')
 
-    def test_fun(self):
-        issue_obj = self.get_object()
+    def test_fun(self, pk):
+        issue_obj = self.get_object(pk)
+        issue_obj.delete()
         return self.request.user == issue_obj.reporter
 
 
+class SuccessView(TemplateView):
+    template_name= "issues/success.html"
+    model = Issue
