@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Log In{% endblock title %}
+
+{% block content %}
+<h1>Log In</h1>
+<form mehtod="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-success" value="Log In">
+</form>
+<small>Forgot your password? <a href="{%url 'password_reset' %}"></a></small>
+{% endblock content %}

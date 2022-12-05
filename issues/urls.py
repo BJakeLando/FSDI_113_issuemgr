@@ -7,5 +7,4 @@ urlpatterns = [
     path('new/', views.IssueCreateView.as_view(), name='new_issue'),
     path('<int:pk>/edit/', views.IssueUpdateView.as_view(), name='edit_issue'),
     path('<int:pk>/delete/', views.IssueDeleteView.as_view(), name='delete_issue'),
-    path('success/', views.SuccessView.as_view(), name='success'),
 ]
