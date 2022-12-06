@@ -3,7 +3,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from django.urls import reverse_lazy
-# from django.core.exceptions import Exception
 from accounts.models import Role, Team, CustomUser
 from .models import Issue, Status, Priority
 
@@ -35,7 +34,7 @@ class BoardView(ListView):
             self.populate_issue_list("to_do_list", to_do_status, product_owner, context)
             self.populate_issue_list("in_p_list", in_p_status, product_owner, context)
             self.populate_issue_list("done_list", done_status, product_owner, context)
-        except:
+        except Exception:
             context["to_do_list"] = []
             context["in_p_list"] = []
             context["done_list"] = []
